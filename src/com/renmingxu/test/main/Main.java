@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String args[]) throws IOException {
-        com.renmingxu.test.net.SocketTest.main(args);
+        com.renmingxu.test.swing.test.main(args);
     }
 
 
