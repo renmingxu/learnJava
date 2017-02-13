@@ -11,9 +11,8 @@ import com.renmingxu.test.encrypt.AesCbcPKCS5PaddingEncrypter;
 
 public class test {
     public static void main(String args[]) {
-        //LoginFrame l = new LoginFrame();
-        //l.setVisible(true);
-        //byte[] b = AES.AES("renmingxu", "zhoushujie");
+        LoginFrame l = new LoginFrame();
+        l.setVisible(true);
     }
 
 

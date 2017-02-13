@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.alibaba.fastjson.*;
+import com.renmingxu.test.encrypt.AesCbcPKCS5PaddingEncrypter;
 
 
 public class SocketTest {
@@ -27,25 +28,20 @@ public class SocketTest {
 
         OutputStream outstream = s.getOutputStream();
         InputStream instream = s.getInputStream();
-
-
-        Map<String, String> m = new HashMap<String, String>();
-        m.put("asdf", "asdf");
-        m.put("asdf", "asdf");
-        m.put("asdf", "asdf");
-
-        String jsonstr = JSON.toJSONString(m) + "asdf";
-
-        outstream.write(jsonstr.getBytes());
-        byte[] b = new byte[100];
+        AesCbcPKCS5PaddingEncrypter cipher =
+                AesCbcPKCS5PaddingEncrypter.getInstance("zhoushujie123456" ,"1234567812345678");
+        String str = "renmingxuasdfasdfasdf";
+        for (int i = 0; i < 11; i++) {
+            str += str;
+        }
+        System.out.println("length sent: " + str.length());
+        outstream.write(cipher.encrypt(str));
+        byte[] b = new byte[1024000];
 
         int len = instream.read(b);
-        tmp = new String(b);
+        tmp = new String(cipher.decrypt(b, 0, len));
+        System.out.println("length sent: " + tmp.length());
         System.out.println(tmp);
-        JSONObject j = JSON.parseObject(tmp);
-        for(java.util.Map.Entry<String,Object> entry:j.entrySet()){
-            System.out.println(entry.getKey() + " - " + entry.getValue());
-        }
         s.close();
 
     }

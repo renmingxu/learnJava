@@ -68,6 +68,18 @@ public class AesCbcPKCS5PaddingEncrypter {
     public byte[] decrypt(byte[] contentencrypt) {
         return AES.CBC_Decrypt(contentencrypt, key, iv);
     }
+    public byte[] decrypt(byte[] contentencrypt, int indexbegin, int length) {
+        byte[] contentfinal = new byte[length];
+        System.arraycopy(contentencrypt, indexbegin, contentfinal, 0, length);
+        return AES.CBC_Decrypt(contentfinal, key, iv);
+    }
+    public byte[] decryptwithzero(byte[] contentencrypt) {
+        int i = contentencrypt.length;
+        while(contentencrypt[--i] == 0);
+        byte[] contentencryptwithoutzero = new byte[++i];
+        System.arraycopy(contentencrypt, 0, contentencryptwithoutzero, 0, i);
+        return AES.CBC_Decrypt(contentencryptwithoutzero, key, iv);
+    }
     public String decryptToStr(byte[] contentencrypt) {
         try {
             return new String(AES.CBC_Decrypt(contentencrypt, key, iv), "UTF-8");

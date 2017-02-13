@@ -107,9 +107,7 @@ public class LoginFrame extends JFrame {
                 String password = new String(passwordField.getPassword());
                 try {
                     String str = Http.get("https://qqooqq.com/chat/login.php?username=" + username + "&password=" + password);
-                    if (str.equals("True")){
-
-                    }
+                    System.out.println(str);
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
