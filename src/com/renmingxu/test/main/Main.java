@@ -11,7 +11,7 @@ import java.util.List;
  * Created by renmingxu on 17-2-9.
  */
 public class Main {
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         class TestObject extends Object {
             @Override
             public int hashCode() {

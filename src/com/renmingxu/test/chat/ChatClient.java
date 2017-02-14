@@ -112,7 +112,7 @@ public class ChatClient {
                 OnOnlineUsers(j.getJSONObject("data"));
                 break;
             default:
-                
+
         }
     }
     private void OnPrivateTextMessage(JSONObject j) {
